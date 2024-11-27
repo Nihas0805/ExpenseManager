@@ -1,0 +1,35 @@
+{%extends 'base.html'%}
+
+{%block main_block%}
+<div class="container">
+    <div class="row">
+        {%for e in expenses%}
+        <div class="col-4 mt-5">
+
+            <div class="card text-bg-white mb-3" style="max-width: 18rem;">
+                <div class="card-header d-flex justify-content-between bg-info text-dark">
+                    <div><b>{{e.user}}</b></div>
+                    <div>{{e.category}}</div>
+                </div>
+                <div class="card-body bg-light text-dark">
+                    <h5 class="card-title">{{e.title}}</h5>
+                    <p class="card-text">{{e.amount}}</p>
+                </div>
+                <div class="card-footer text-body-white bg-info text-dark">
+                    Created_date:{{e.created_date|date}}<br>
+    
+                    <div class="container d-flex justify-content-between text-dark">
+                    <a href="{%url 'expense-update' e.id%}" class="btn btn-light mt-2 text-dark ">View</a>
+                    <a href="{%url 'expense-delete' e.id%}" class="btn btn-light mt-2 text-dark ">Delete</a>
+                    </div>
+                </div>
+            </div>
+    
+    
+        </div>
+    
+        {%endfor%}
+    </div>
+</div>
+
+{%endblock%}
